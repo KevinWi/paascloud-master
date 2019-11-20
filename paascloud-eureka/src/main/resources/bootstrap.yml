@@ -1,20 +1,21 @@
+#这一段配置的作用是为了在多网卡服务器上部署项目时指定地址
 spring:
   cloud:
     inetutils:
-      ignoredInterfaces:
+      ignoredInterfaces:              #忽略网卡
         - docker0
         - veth.*
         - VM.*
-      preferredNetworks:
+      preferredNetworks:              #指定IP地址段
         - 192.168
 
 eureka:
   server:
-    enable-self-preservation: false
+    enable-self-preservation: false   #关闭eureka自我保护机制
   instance:
-    hostname: localhost
+    hostname: localhost               #设置当前实例的主机名称
   client:
-    registerWithEureka: false
-    fetchRegistry: false
-    serviceUrl:
+    registerWithEureka: false         #关闭服务注册（不将自身作为服务注册
+    fetchRegistry: false              #关闭检索服务
+    serviceUrl:                       #设置服务注册中心默认地址
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka

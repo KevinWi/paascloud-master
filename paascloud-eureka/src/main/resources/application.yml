@@ -1,15 +1,16 @@
+#指定启动的端口
 server:
   port: 8761
 
 spring:
   profiles:
-    active: dev
-  application:
+    active: dev   #用来区分环境配置，这里好像没什么用了（没有其他配置文件）
+  application:    #指定应用名称
     name: @pom.artifactId@
 
 security:
   basic:
-    enabled: true
-  user:
+    enabled: true #开启基本鉴权
+  user:           #默认用户名 密码
     name: root
     password: root
